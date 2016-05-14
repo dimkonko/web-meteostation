@@ -1,1 +1,3 @@
 sed -i -e 's/\r$//' $filename - replace Windows line breaks
+
+SELECT * FROM METEO_DATA_SMART_HOUSE WHERE create_date = (select MAX(create_date) from METEO_DATA_SMART_HOUSE);
