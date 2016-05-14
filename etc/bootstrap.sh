@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PROJECT_NAME="meteostation.com"
 
 echo "# Updating the cache..."
@@ -9,6 +11,8 @@ apt-get -y install apache2
 echo "# Installing php5"
 apt-get -y install php5 libapache2-mod-php5
 
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password 123456'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password 123456'
 echo "Installing mysql"
 apt-get -y install mysql-server-5.5 libapache2-mod-auth-mysql php5-mysql
 
