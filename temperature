@@ -1,0 +1,45 @@
+#! /bin/sh
+# /etc/init.d/temperature
+
+export SCRIPT_TITLE="Temperature script"
+export SCRIPT_PATH=/home/tornado/dima_temperature.py
+
+case "$1" in
+  start)
+    pid=$(ps ax | grep $SCRIPT_PATH | grep -v grep | awk '{print $1}')
+    if [ -n "$pid" ]
+    then
+      echo -e "\e[00;31m$SCRIPT_TITLE is already running\e[00m"
+    else
+      echo -e "\e[00;32mStarting $SCRIPT_TITLE\e[00m"
+      python $SCRIPT_PATH &
+    fi
+    ;;
+  stop)
+    pid=$(ps ax | grep $SCRIPT_PATH | grep -v grep | awk '{print $1}')
+    if [ -n "$pid" ]
+    then
+      echo -e "\e[00;31mStopping  $SCRIPT_TITLE\e[00m"
+      kill $pid
+    else
+      echo -e "\e[00;31m$SCRIPT_TITLE is not running\e[00m"
+    fi
+    ;;
+  status)
+    pid=$(ps ax | grep $SCRIPT_PATH | grep -v grep | awk '{print $1}')
+    if [ -n "$pid" ]
+    then 
+      echo -e "\e[00;32m$SCRIPT_TITLE script is running with pid: $pid\e[00m"
+    else
+      echo -e "\e[00;31m$SCRIPT_TITLE is not running\e[00m"
+    fi
+    ;;
+  *)
+    echo "Usage: dima_temperature{start|stop|status}"
+    exit 1
+    ;;
+
+esac
+
+exit 0
+

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-PROJECT_NAME="meteostation.com"
+PROJECT_NAME="meteo.com"
+
+export PROJECT_NAME=$PROJECT_NAME
 
 echo "# Updating the cache..."
 apt-get update

@@ -12,7 +12,8 @@ Vagrant.configure(2) do |config|
   # guest(VM):host
   config.vm.network "forwarded_port", guest: 80, host: 80
 
-  config.vm.synced_folder "public_html/", "/var/www"
+  # config.vm.synced_folder "public_html/", "/var/www"
+  config.vm.synced_folder ".", "/var/www"
 
   config.vm.provision :shell, path: "./etc/bootstrap.sh", privileged: true
 end
