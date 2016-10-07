@@ -1,6 +1,5 @@
-"""
-Script to get temperature
-"""
+#!/usr/bin/python
+
 import Adafruit_DHT as dht
 import time
 import datetime
