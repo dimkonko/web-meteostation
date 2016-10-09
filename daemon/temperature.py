@@ -49,7 +49,7 @@ def enable_logging():
     return logger
 
 
-DELAY_SECONDS = 10
+DELAY_SECONDS = 30
 logger = enable_logging()
 
 
