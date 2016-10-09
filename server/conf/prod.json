@@ -1,0 +1,9 @@
+{
+  "DEBUG": false,
+  "DB": {
+    "HOST": "dimkonko.mysql.pythonanywhere-services.com",
+    "USERNAME": "dimkonko",
+    "PASSWORD": "supermeteo",
+    "DBNAME": "meteo"
+  }
+}
