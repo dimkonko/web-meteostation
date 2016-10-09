@@ -1,5 +1,10 @@
 # web-meteostation
 
+### Server instalatio
+* `sudo apt-get install python-mysqldb`
+* Create virtualenv (or not)
+* `pip install -r requirements.pip`
+
 ### Daemon installation:
 * Check if daemon scripts are executable. If not - `$ sudo chmod 755` for `.sh` and `.py` scripts.
 * Copy the `temperature.sh` script to ``/etc/init.d/` folder with `$ sudo cp temperature.sh /etc/init.d/`
