@@ -53,11 +53,12 @@ DELAY_SECONDS = 30
 logger = enable_logging()
 
 
-def send_request(t, h):
+def send_request(t, h, cur_time):
     url = 'http://dimkonko.pythonanywhere.com/add_data'
     values = {
         't': t,
-        'h': h
+        'h': h,
+        'create_date': cur_time
     }
     logger.info('Sending data to %s with values: %s' % (url, str(values)))
     data = urllib.urlencode(values)
@@ -69,9 +70,9 @@ def send_request(t, h):
 
 while True:
     try:
-        h, t = dht.read_retry(dht.DHT11, 4)
+        h, t = dht.read_retry(dht.DHT11, 14)
         cur_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        send_request(t, h)
+        send_request(t, h, cur_time)
     except Exception as ex:
         logger.error(ex.message)
     finally:

@@ -29,5 +29,6 @@ def index():
 def add_data():
     t = request.form['t']
     h = request.form['h']
-    mysqlapi.insert_meteo_data(t, h)
+    create_date = request.form['create_date']
+    mysqlapi.insert_meteo_data(t, h, create_date)
     return 'ok'

@@ -22,9 +22,9 @@ class MySQLApi(object):
 
         return rows
 
-    def insert_meteo_data(self, t, h):
+    def insert_meteo_data(self, t, h, create_date):
         con = self.connect()
         with con:
             cur = con.cursor()
-            cur.execute("INSERT INTO METEO_DATA (temperature, humidity, create_date) VALUES (%s, %s, NOW())" % (t, h))
+            cur.execute("INSERT INTO METEO_DATA (temperature, humidity, create_date) VALUES (%s, %s, %s)" % (t, h, create_date))
 
