@@ -5,7 +5,7 @@ import time
 import urllib
 import urllib2
 
-#import Adafruit_DHT as dht
+import Adafruit_DHT as dht
 
 
 def enable_logging():
@@ -54,7 +54,7 @@ logger = enable_logging()
 
 
 def send_request(t, h):
-    url = 'http://localhost:5000/add_data'
+    url = 'http://dimkonko.pythonanywhere.com/add_data'
     values = {
         't': t,
         'h': h
@@ -69,9 +69,7 @@ def send_request(t, h):
 
 while True:
     try:
-        h = 33
-        t = 17
-        #h, t = dht.read_retry(dht.DHT11, 4)
+        h, t = dht.read_retry(dht.DHT11, 4)
         cur_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         send_request(t, h)
     except Exception as ex:

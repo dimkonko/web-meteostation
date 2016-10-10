@@ -11,8 +11,8 @@
 ### END INIT INFO
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
-DIR=/var/www/meteo.com/web-meteostation/
-DAEMON=$DIR/etc/temperature.py
+DIR=/opt/web-meteostation
+DAEMON=$DIR/temperature.py
 DAEMON_NAME=temperature
 
 # Add any command line options for your daemon here
