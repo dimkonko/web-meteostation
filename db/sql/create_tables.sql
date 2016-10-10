@@ -1,10 +1,10 @@
-USE `meteo`;
+USE `dimkonko$meteo`;
 
-DROP TABLE IF NOT EXISTS `METEO_DATA`;
+DROP TABLE IF EXISTS `METEO_DATA`;
 
 CREATE TABLE METEO_DATA (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     temperature FLOAT(4, 2),
-    humidity TINYINT ,
+    humidity TINYINT,
     create_date DATETIME NOT NULL
 );
