@@ -1,8 +1,29 @@
+body {
+    margin: 8px;
+}
+
 #content {
 	width: 1024px;
 	margin: auto;
 }
 
-.last-updates {
-	border-bottom: 1px solid black;
+.temperature-block {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+}
+
+.records .temperature-block p {
+    margin: 2px 0;
+}
+
+@media only screen
+and (max-device-width: 320px) {
+    body {
+        padding: 0;
+        margin: 4px;
+    }
+    #content {
+        width: auto;
+        font-size: 0.4em;
+    }
 }

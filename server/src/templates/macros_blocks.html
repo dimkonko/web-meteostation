@@ -1,0 +1,7 @@
+{% macro temperatureBlock(item) %}
+<div class="temperature-block">	
+    <p>Temperature: {{item.temperature}}&#8451;</p>
+    <p>Humidity: {{item.humidity}}%</p>
+    <p>Date: {{item.create_date}}</p>
+</div>
+{% endmacro %}

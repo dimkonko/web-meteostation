@@ -1,29 +1,30 @@
+{% import "macros_blocks.html" as macros_blocks %}
+
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
 {% block head %}
-	<link rel="stylesheet" type="text/css" href="static/css/index.css">
+  <link rel="stylesheet" type="text/css" href="static/css/index.css">
 {% endblock %}
 {% block content %}
 
 <div id="content">
-	<div class="last-updates">
-		<h2>Last Update:</h2>
-		{% if has_last_update %}
-			<p>Temperature: {{last_update.t}}&#8451;</p>
-			<p>Humidity: {{last_update.h}}%</p>
-			<p>Date: {{last_update.create_date}}</p>
-		{% else %}
-			<p>No Updates</p>
-		{% endif %}
-	</div>
+  <div class="last-update">
+    <h2>Last Update:</h2>
+    {% if has_last_update %}
+      {{ macros_blocks.temperatureBlock(last_update) }}
+    {% else %}
+      <p>No Updates</p>
+    {% endif %}
+  </div>
 
 
-	<div>
-		<h3>Records:</h3>
-	    {% for row in data %}
-	        <p>Temperature: {{ row.temperature }}&#8451;, Humidity: {{ row.humidity }}%, Date: {{ row.create_date }}</p>
-	    {% endfor %}
-	</div>
+  <div class="records">
+    <h3>Records:</h3>
+    {% for row in data %}
+      {{ macros_blocks.temperatureBlock(row) }}
+      <!-- <p>Temperature: {{ row.temperature }}&#8451;, Humidity: {{ row.humidity }}%, Date: {{ row.create_date }}</p> -->
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}

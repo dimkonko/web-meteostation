@@ -25,8 +25,8 @@ last_insert = None
 def set_last_insert(t, h, create_date):
     global last_insert
     last_insert = {
-        't': t,
-        'h': h,
+        'temperature': t,
+        'humidity': h,
         # Fri 14, October 2016 at 08:22 AM
         'create_date': datetime.strptime(create_date, "%Y-%m-%d %H:%M:%S").strftime("%a %d, %B %Y at %I:%M %p")
     }
