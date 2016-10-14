@@ -1,8 +1,7 @@
 # Python
-.pyc
-.egg
+*.pyc
+*.egg
 
 # etc
 .vagrant
-.project
 .idea
