@@ -35,7 +35,7 @@ def set_last_insert(t, h, create_date):
 
 def is_data_changed(t, h):
     data_changed = True
-    if last_insert and t == last_insert['t'] and h == last_insert['h']:
+    if last_insert and t == last_insert['temperature'] and h == last_insert['humidity']:
         data_changed = False
     return data_changed
 
