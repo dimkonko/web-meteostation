@@ -17,13 +17,8 @@ body {
 }
 
 @media only screen
-and (max-device-width: 320px) {
-    body {
-        padding: 0;
-        margin: 4px;
-    }
+and (max-device-width: 1024px) {
     #content {
         width: auto;
-        font-size: 0.4em;
     }
 }
