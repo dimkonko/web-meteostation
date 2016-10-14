@@ -4,6 +4,6 @@
     "HOST": "localhost",
     "USERNAME": "root",
     "PASSWORD": "123456",
-    "DBNAME": "meteo"
+    "DBNAME": "dimkonko$meteo"
   }
 }
