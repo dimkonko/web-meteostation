@@ -12,19 +12,18 @@ class MySQLApi(object):
     def get_dict_cursor(self, conn):
         return conn.cursor(mdb.cursors.DictCursor)
 
-    def get_meteo_data(self):
+    def get(self, query):
         rows = []
         con = self.connect()
         with con:
             cur = self.get_dict_cursor(con)
-            cur.execute("select * from METEO_DATA")
+            cur.execute(query)
             rows = cur.fetchall()
 
         return rows
 
-    def insert_meteo_data(self, t, h, create_date):
+    def set(self, query, *args):
         con = self.connect()
         with con:
             cur = con.cursor()
-            cur.execute("INSERT INTO METEO_DATA (temperature, humidity, create_date) VALUES (%s, %s, '%s')" % (t, h, create_date))
-
+            cur.execute(query % args)
