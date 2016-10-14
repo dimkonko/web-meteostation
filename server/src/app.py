@@ -1,3 +1,5 @@
+import pytz
+
 import config_provider
 import queries
 
@@ -69,7 +71,8 @@ def index():
 def add_data():
     t = request.form.get('t', 0)
     h = request.form.get('h', 0)
-    create_date = request.form.get('create_date', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    create_date = request.form.get('create_date', datetime.now(pytz.utc).strftime("%Y-%m-%d %H:%M:%S"))
+    print create_date
 
     if not is_params_valid(t, h):
         return abort(400)
