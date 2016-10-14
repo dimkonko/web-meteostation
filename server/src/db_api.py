@@ -26,5 +26,5 @@ class MySQLApi(object):
         con = self.connect()
         with con:
             cur = con.cursor()
-            cur.execute("INSERT INTO METEO_DATA (temperature, humidity, create_date) VALUES (%s, %s, %s)" % (t, h, create_date))
+            cur.execute("INSERT INTO METEO_DATA (temperature, humidity, create_date) VALUES (%s, %s, '%s')" % (t, h, create_date))
 
