@@ -5,10 +5,8 @@ from datetime import datetime
 
 from flask import (
     Flask,
-    session,
     render_template,
     request,
-    redirect,
     abort
 )
 
@@ -40,6 +38,13 @@ def is_data_changed(t, h):
     return data_changed
 
 
+def is_params_valid(t, h):
+    valid = False
+    if t != '0' and h != '0':
+        valid = True
+    return valid
+
+
 def initialize():
     # Get [0], because there should be only 1 record
     last_record = mysqlapi.get(queries.GET_LAST_RECORD)
@@ -62,13 +67,15 @@ def index():
 
 @app.route('/add_data', methods=["POST"])
 def add_data():
-    t = request.form['t']
-    h = request.form['h']
-    create_date = request.form['create_date']
+    t = request.form.get('t', 0)
+    h = request.form.get('h', 0)
+    create_date = request.form.get('create_date', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+    if not is_params_valid(t, h):
+        return abort(400)
 
     # Insert data only if it's different from previous
     if is_data_changed(t, h):
-        print 'insert'
         mysqlapi.set(queries.INSERT_RECORD, t, h, create_date)
 
     set_last_insert(t, h, create_date)
