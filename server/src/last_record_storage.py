@@ -2,6 +2,9 @@ import date_service
 
 
 class LastRecordStorage(object):
+    def __init__(self):
+        self.last_record = None
+
     def init_record(self, t, h, create_date):
         self.last_record = LastRecord(t, h, self.parse_date(create_date))
         return self.last_record

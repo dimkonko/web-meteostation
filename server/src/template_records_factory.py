@@ -5,7 +5,7 @@ def create_from_last_update(record):
     """
     :param (LastUpdate) record
     """
-    return {
+    return None if record is None else {
         "temperature": record.temperature,
         "humidity": record.humidity,
         "create_date":  date_service.get_readable_date(record.create_date)
