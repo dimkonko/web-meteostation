@@ -23,6 +23,7 @@ last_insert = None
 
 
 def set_last_insert(t, h, create_date):
+    print "update"
     global last_insert
     last_insert = {
         'temperature': int(t),
@@ -34,7 +35,7 @@ def set_last_insert(t, h, create_date):
 
 def is_data_changed(t, h):
     data_changed = False
-    if not last_insert or (t != last_insert['temperature'] and h != last_insert['humidity']):
+    if not last_insert or (t != last_insert['temperature'] or h != last_insert['humidity']):
         data_changed = True
     return data_changed
 
@@ -50,6 +51,7 @@ def initialize():
     # Get [0], because there should be only 1 record
     last_record = mysqlapi.get(queries.GET_LAST_RECORD)
     if last_record:
+        print "insert"
         last_record = last_record[0]
         set_last_insert(str(last_record['temperature']), str(last_record['humidity']), str(last_record['create_date']))
 
