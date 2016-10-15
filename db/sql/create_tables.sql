@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS `METEO_DATA`;
 
 CREATE TABLE METEO_DATA (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    temperature FLOAT(4, 2),
+    temperature TINYINT,
     humidity TINYINT,
     create_date DATETIME NOT NULL
 );
