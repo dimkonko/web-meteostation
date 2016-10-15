@@ -55,7 +55,7 @@ def add_data():
     if last_record_storage.has_data_changed(t, h):
         print "i"
         record = last_record_storage.init_record(t, h, create_date)
-        mysqlapi.set(queries.INSERT_RECORD, record.t, record.h,
+        mysqlapi.set(queries.INSERT_RECORD, record.temperature, record.humidity,
                      date_service.get_formated_date(record.create_date))
     else:
         print 'u'
