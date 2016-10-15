@@ -19,12 +19,13 @@
   </div>
 
 
-  <div class="records">
-    <h3>Records:</h3>
-    {% for row in data %}
-      {{ macros_blocks.temperatureBlock(row) }}
-      <!-- <p>Temperature: {{ row.temperature }}&#8451;, Humidity: {{ row.humidity }}%, Date: {{ row.create_date }}</p> -->
-    {% endfor %}
-  </div>
+  {% if has_last_update %}
+    <div class="records">
+      <h3>Records:</h3>
+      {% for row in data %}
+        {{ macros_blocks.temperatureBlock(row) }}
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>
 {% endblock %}
