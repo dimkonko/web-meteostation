@@ -25,17 +25,17 @@ last_insert = None
 def set_last_insert(t, h, create_date):
     global last_insert
     last_insert = {
-        'temperature': t,
-        'humidity': h,
+        'temperature': int(t),
+        'humidity': int(h),
         # Fri 14, October 2016 at 08:22 AM
         'create_date': datetime.strptime(create_date, "%Y-%m-%d %H:%M:%S").strftime("%a %d, %B %Y at %I:%M %p")
     }
 
 
 def is_data_changed(t, h):
-    data_changed = True
-    if last_insert and t == last_insert['temperature'] and h == last_insert['humidity']:
-        data_changed = False
+    data_changed = False
+    if not last_insert or (t != last_insert['temperature'] and h != last_insert['humidity']):
+        data_changed = True
     return data_changed
 
 
